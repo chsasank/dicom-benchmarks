@@ -16,3 +16,5 @@ services:
         volumes:
             - ./large_dicom_dir.tar.gz:/srv/test/large_dicom_dir.tar.gz
             - ./benchmark.sh:/srv/test/benchmark.sh
+            - ./benchmark_script.py:/srv/test/benchmark_script.py
+            - ./dicom_files:/srv/test/dicom_files
