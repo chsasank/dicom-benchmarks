@@ -1,0 +1,18 @@
+version: '3.0'
+services:
+    pynetdicom:
+        build: .
+        ports:
+            - 5254:5252
+        command: python3 -m pynetdicom storescp 5252 --ignore -v
+    dcmtk:
+        build: .
+        ports:
+            - 5255:5252
+        command: storescp 5252 --accept-all --ignore -v
+    benchmark:
+        build: .
+        command: tail -f /dev/null
+        volumes:
+            - ./large_dicom_dir.zip:/srv/test/large_dicom_dir.zip
+            - ./benchmark.sh:/srv/test
