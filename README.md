@@ -129,7 +129,8 @@ Which benchmark do you wish to run?
 | Mac (M1) | 9.32 s | 2.07 s|
 | Ubunut 18 (machine 1) | 6.51 s  | 51.09 s |
 | Ubuntu 18 (machine 2) | 11.52 s | 15.56 s |
-| Ubuntu 20 (machine 3) | 10.83 s | 10.20 s 
+| Ubuntu 20 (machine 3) | 10.83 s | 10.20 s |
+| Ubuntu 18 (machine 4, inside docker) | 10.15 s | 45.68 s  |
 
 
 
