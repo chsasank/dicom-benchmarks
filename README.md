@@ -6,7 +6,7 @@ Comparing pynetdicom and dcmtk's dicom servers.
 docker-compose up --build
 ```
 
-# Docker benchmarks
+## Docker benchmarks
 
 In another terminal
 
@@ -14,7 +14,7 @@ In another terminal
 docker-compose exec benchmark bash /srv/test/benchmark.sh pynetdicom:5252 dcmtk:5252
 ```
 
-## On my windows machine
+### On my windows machine
 
 On my system this returns
 
@@ -69,7 +69,7 @@ sys     0m0.437s
 --
 ```
 
-## On my linux server
+### On my linux server
 
 
 ```
@@ -106,7 +106,7 @@ sys     0m0.127s
 --
 ```
 
-## On my M1 Mac
+### On my M1 Mac
 
 ```
 my_ip=192.168.0.117
@@ -142,7 +142,7 @@ sys	0m0.174s
 --
 ```
 
-# Pynetdicom built-in benchmark
+## Pynetdicom built-in benchmark
 
 ```
 $ python benchmark_script.py
@@ -176,5 +176,66 @@ docker-compose exec benchmark python3 /srv/test/benchmark_script.py
 | Ubuntu 20 (machine 3) | 10.83 s | 10.20 s |
 | Ubuntu 18 (machine 4, inside docker) | 10.15 s | 45.68 s  |
 
+
+## Over Network
+
+My machine = MBA M1
+Their machine = Windows machine
+
+```bash
+my_ip=192.168.0.117
+their_ip=192.168.0.119
+docker-compose exec benchmark bash /srv/test/benchmark.sh $my_ip:5254 $my_ip:5255  $their_ip:5252   $their_ip:5253   $their_ip:5254   $their_ip:5255
+```
+
+```
+dcmsend on 192.168.0.117:5254
+
+real    0m7.552s
+user    0m0.427s
+sys     0m0.185s
+--
+dcmsend on 192.168.0.117:5255
+
+real    0m7.617s
+user    0m0.364s
+sys     0m0.178s
+--
+dcmsend on 192.168.0.119:5252
+
+real    0m14.388s
+user    0m0.405s
+sys     0m0.220s
+--
+dcmsend on 192.168.0.119:5253
+  
+real    0m20.440s
+user    0m0.436s
+sys     0m0.236s
+--
+dcmsend on 192.168.0.119:5254
+
+real    0m17.937s
+user    0m0.414s
+sys     0m0.252s
+--
+dcmsend on 192.168.0.119:5255
+  
+real    1m3.758s
+user    0m1.809s
+sys     0m0.942s
+--
+```
+
+What these ports are 
+
+| host | port | explanation | time | 
+| -- | -- | -- | -- |
+| $my_ip | 5254 | pynetdicom storescp on docker | 7.552s |
+| $my_ip | 5255 | dcmtk storescp on docker | 7.617s |
+| $their_ip | 5252 | pynetdicom storescp on native | 14.388s |
+| $their_ip | 5253 | dcmtk storescp on native | 20.440s |
+| $their_ip | 5254 | pynetdicom storescp on docker | 17.937s | 
+| $their_ip | 5255 | dcmtk storescp on docker | 1m3.758s |
 
 
