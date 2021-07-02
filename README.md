@@ -6,13 +6,15 @@ Comparing pynetdicom and dcmtk's dicom servers.
 docker-compose up --build
 ```
 
+# Docker benchmarks
+
 In another terminal
 
 ```
 docker-compose exec benchmark bash /srv/test/benchmark.sh pynetdicom:5252 dcmtk:5252
 ```
 
-# On my windows machine
+## On my windows machine
 
 On my system this returns
 
@@ -67,7 +69,7 @@ sys     0m0.437s
 --
 ```
 
-# On my linux server
+## On my linux server
 
 
 ```
@@ -101,6 +103,42 @@ dcmsend on 192.168.1.13:5255
 real    0m44.473s
 user    0m0.692s
 sys     0m0.127s
+--
+```
+
+## On my M1 Mac
+
+```
+my_ip=192.168.1.13
+docker-compose exec benchmark bash /srv/test/benchmark.sh pynetdicom:5252 $my_ip:5254 dcmtk:5252 $my_ip:5255
+```
+
+Output:
+
+```
+dcmsend on pynetdicom:5252
+
+real	0m6.160s
+user	0m0.346s
+sys	0m0.141s
+--
+dcmsend on 192.168.0.117:5254
+
+real	0m7.524s
+user	0m0.406s
+sys	0m0.212s
+--
+dcmsend on dcmtk:5252
+
+real	0m12.288s
+user	0m0.665s
+sys	0m0.241s
+--
+dcmsend on 192.168.0.117:5255
+
+real	0m8.179s
+user	0m0.395s
+sys	0m0.174s
 --
 ```
 
