@@ -167,7 +167,7 @@ To run inside docker
 docker-compose exec benchmark python3 /srv/test/benchmark_script.py
 ```
 
-| Machine | Benchmark 3 | Benchmark 10 |
+| Machine | Benchmark 3 (pynetdicom server) | Benchmark 10 (dcmtk server) |
 | ---- | --- | -- |
 | Mac (M1) | 9.32 s | 2.07 s|
 | Mac (M1, inside docker) |  8.04 s | 11.33 s|
