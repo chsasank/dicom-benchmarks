@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 cd "$(dirname "$0")"
-
 tar -xzf large_dicom_dir.tar.gz
 
-servers=(pynetdicom:5252 dcmtk:5252)
+servers=( "$@" )
 for server in "${servers[@]}"
 do
     arr=(${server//:/ })

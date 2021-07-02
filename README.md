@@ -9,7 +9,7 @@ docker-compose up --build
 In another terminal
 
 ```
-docker-compose exec benchmark bash /srv/test/benchmark.sh
+docker-compose exec benchmark bash /srv/test/benchmark.sh pynetdicom:5252 dcmtk:5252
 ```
 
 On my system this returns
