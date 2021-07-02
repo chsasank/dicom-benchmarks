@@ -103,3 +103,27 @@ user    0m0.692s
 sys     0m0.127s
 --
 ```
+
+# Pynetdicom built-in benchmark
+
+```
+$ python benchmark_script.py
+Use yappi (y/n:)
+n
+Which benchmark do you wish to run?
+  1. Storage SCU, 1000 datasets over 1 association
+  2. Storage SCU, 1 dataset per association over 1000 associations
+  3. Storage SCP, 1000 datasets over 1 association
+  4. Storage SCP, 1000 datasets over 1 association (write)
+  5. Storage SCP, 1000 datasets over 1 association (write fast)
+  6. Storage SCP, 1000 datasets over 1 association (write fastest)
+  7. Storage SCP, 1 dataset per association over 1000 associations
+  8. Storage SCP, 1000 datasets per association over 10 simultaneous associations
+  9. Storage SCU/SCP, 1000 datasets over 1 association
+  10. Storage DCMTK SCU/SCP, 1000 datasets over 1 association
+```
+
+| Benchmark | Mac | Linux |
+| ---- | --- | -- |
+| 3  | 9.32 s | 6.51 s |
+| 10 | 2.07 s | 51.09 s |
