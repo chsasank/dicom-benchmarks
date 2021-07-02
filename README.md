@@ -123,7 +123,7 @@ Which benchmark do you wish to run?
   10. Storage DCMTK SCU/SCP, 1000 datasets over 1 association
 ```
 
-| Benchmark | Mac (M1) | Linux |
-| ---- | --- | -- |
-| 3  | 9.32 s | 6.51 s |
-| 10 | 2.07 s | 51.09 s |
+| Benchmark | Mac (M1) | Ubunut 18 (machine 1) | Ubuntu 18 (machine 2) | Ubuntu 18 (machine 3) | 
+| ---- | --- | -- | -- | -- |
+| 3  | 9.32 s | 6.51 s | 11.52 s | 10.83 s |
+| 10 | 2.07 s | 51.09 s | 15.56 s | 10.20 s |
