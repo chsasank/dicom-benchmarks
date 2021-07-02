@@ -2,13 +2,14 @@
 set -e
 cd "$(dirname "$0")"
 
-unzip -o large_dicom_dir.zip
+tar -xzf large_dicom_dir.tar.gz
 
-hosts=(pynetdicom dmckt)
-for port in  "${array[@]}"
+port=5252
+hosts=(pynetdicom dcmtk)
+for host in "${hosts[@]}"
 do
-    echo "dcmsend on $ip:$port"
-    echoscu $ip $port
-    time dcmsend $ip $port TEN*/*
+    echo "dcmsend on $host:$port"
+    echoscu $host $port
+    time dcmsend $host $port large_dicom_dir/*
     echo '--'
 done
