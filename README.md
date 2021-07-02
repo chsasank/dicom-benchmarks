@@ -109,7 +109,7 @@ sys     0m0.127s
 ## On my M1 Mac
 
 ```
-my_ip=192.168.1.13
+my_ip=192.168.0.117
 docker-compose exec benchmark bash /srv/test/benchmark.sh pynetdicom:5252 $my_ip:5254 dcmtk:5252 $my_ip:5255
 ```
 
@@ -171,7 +171,7 @@ docker-compose exec benchmark python3 /srv/test/benchmark_script.py
 | ---- | --- | -- |
 | Mac (M1) | 9.32 s | 2.07 s|
 | Mac (M1, inside docker) |  8.04 s | 11.33 s|
-| Ubunut 18 (machine 1) | 6.51 s  | 51.09 s |
+| Ubuntu 18 (machine 1) | 6.51 s  | 51.09 s |
 | Ubuntu 18 (machine 2) | 11.52 s | 15.56 s |
 | Ubuntu 20 (machine 3) | 10.83 s | 10.20 s |
 | Ubuntu 18 (machine 4, inside docker) | 10.15 s | 45.68 s  |
